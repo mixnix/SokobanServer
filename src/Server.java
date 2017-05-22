@@ -6,7 +6,14 @@ import java.net.Socket;
 
 
 public class Server {
+    /**
+     * numer portu na którym działa serwer
+     */
     private int port;
+
+    /**
+     * metoda rozpoczynająca działanie serwera
+     */
     public void run() {
         try {
             BufferedReader br = new BufferedReader(new FileReader("Config\\serwer.txt"));

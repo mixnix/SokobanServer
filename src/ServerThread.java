@@ -5,12 +5,22 @@ import java.net.Socket;
  * Created by user_name on 21/05/2017.
  */
 public class ServerThread implements Runnable {
+    /**
+     * port na którym działa serwer
+     */
     private Socket socket;
 
+    /**
+     * konstruktor ustawiający port
+     * @param socket
+     */
     public ServerThread(Socket socket){
         this.socket=socket;
     }
 
+    /**
+     * metoda ropozczynajaca dzialanie serwer, odbiera komendy i wysyla z powrotem dane
+     */
     @Override
     public void run() {
         try {

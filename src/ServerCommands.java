@@ -7,17 +7,35 @@ import java.io.*;
 public final class ServerCommands {
 
 
+    /**
+     * zmienna oznaczajaca pierwszy level
+     */
     private static int firstLevel=1;
 
+    /**
+     * zmienna oznaczajaca ostatni level
+     */
     private static int lastLevel=2;
 
+    /**
+     * zmienna przyporzadkowujaca lcizbe kolejnym laczacymi sie z nami klientami
+     */
     private static int clientNumber =0;
 
+    /**
+     * lista leveli: level1, level2 itd.
+     */
     private static  String[] levelList;
 
+    /**
+     * czy serwer akceptuje w danym momencie połączenia od klientów
+     */
     private static boolean acceptingClients= true;
 
 
+    /**
+     * statyczny blok inicjujacy podstawowe zmienne
+     */
     static{
         try {
             BufferedReader br = new BufferedReader(new FileReader("Config\\levels.txt"));
@@ -39,7 +57,11 @@ public final class ServerCommands {
     }
 
 
-
+    /**
+     * Metoda która na podstawie komendy wysłanej do serwera tworzy odpowiednie dane do odesłania
+     * @param command
+     * @return
+     */
     public static String serverAction(String command){
         String serverCommand = command;
         String originalCommand= command;
@@ -77,7 +99,10 @@ public final class ServerCommands {
     }
 
 
-
+    /**
+     * komenda tworząca dane połączenia klienta z serwerem (informacja o tym, że udało się połączyć)
+     * @return
+     */
     private static String connect(){
         String serverMessage;
         if(acceptingClients) {
@@ -91,6 +116,10 @@ public final class ServerCommands {
     }
 
 
+    /**
+     * tworzy ustawienia głównego menu
+     * @return
+     */
     private static String getSettings(){
         StringBuilder sb = new StringBuilder();
         try (BufferedReader br = new BufferedReader(new FileReader("Config\\config.xml"))){
@@ -108,10 +137,11 @@ public final class ServerCommands {
     }
 
 
-
-
-
-
+    /**
+     * tworzy dane na podstawie których tworzony jest poziom
+     * @param levelNumber
+     * @return
+     */
     private static String getLevel(int levelNumber){
         StringBuilder sb = new StringBuilder();
         try (BufferedReader br = new BufferedReader(new FileReader("Config\\"+levelList[levelNumber-1]+".xml"))){
