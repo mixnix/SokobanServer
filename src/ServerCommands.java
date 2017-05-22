@@ -70,10 +70,6 @@ public final class ServerCommands {
             originalCommand=command;
             serverCommand=("GET_LEVEL");
         }
-        if(command.contains("GAME_SCORE:")){
-            originalCommand=command;
-            serverCommand="GAME_SCORE";
-        }
 
 
         String serverMessage;
