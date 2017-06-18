@@ -80,10 +80,15 @@ public final class ServerCommands {
             case "GET_SETTINGS":
                 serverMessage=getSettings();
                 break;
-
+            case "GET_HELP":
+                serverMessage=getHelp();
+                break;
             case "GET_LEVEL":
                 String str[] = originalCommand.split(":");
                 serverMessage=getLevel(Integer.parseInt(str[1]));
+                break;
+            case "GET_NUMBER_OF_LVLS":
+                serverMessage=getNumberOfLvls();
                 break;
 
 
@@ -149,6 +154,34 @@ public final class ServerCommands {
         catch (Exception e){
 
         }
+        return sb.toString();
+    }
+    private static String getNumberOfLvls(){
+        StringBuilder sb = new StringBuilder();
+        try (BufferedReader br = new BufferedReader(new FileReader("Config\\numberOfLvls.xml"))){
+            String currentLine;
+            while ((currentLine = br.readLine()) != null) {
+                sb.append(currentLine);
+            }
+        }
+        catch (Exception e){
+
+        }
+        return sb.toString();
+    }
+
+    private static String getHelp(){
+        StringBuilder sb = new StringBuilder();
+        try (BufferedReader br = new BufferedReader(new FileReader("Config\\help.xml"))){
+            String currentLine;
+            while ((currentLine = br.readLine()) != null) {
+                sb.append(currentLine);
+            }
+        }
+        catch (Exception e){
+
+        }
+
         return sb.toString();
     }
 
