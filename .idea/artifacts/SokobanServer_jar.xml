@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="SokobanServer:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/SokobanServer_jar</output-path>
+    <root id="archive" name="SokobanServer.jar">
+      <element id="module-output" name="SokobanServer" />
+    </root>
+  </artifact>
+</component>

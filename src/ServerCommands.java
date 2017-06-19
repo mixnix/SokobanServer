@@ -90,6 +90,10 @@ public final class ServerCommands {
             case "GET_NUMBER_OF_LVLS":
                 serverMessage=getNumberOfLvls();
                 break;
+            case "GET_HIGHSCORES":
+                serverMessage = getHighscores();
+                break;
+
 
 
 
@@ -137,6 +141,25 @@ public final class ServerCommands {
         return sb.toString();
     }
 
+    /**
+     * metoda formułjąca najwyższe wyniki do przesłania
+     * @return
+     */
+    private static String getHighscores(){
+        StringBuilder sb = new StringBuilder();
+        try (BufferedReader br = new BufferedReader(new FileReader("Config\\highscores.xml"))){
+            String currentLine;
+            while ((currentLine = br.readLine()) != null) {
+                sb.append(currentLine);
+            }
+        }
+        catch (Exception e){
+            System.out.println("get highscores error: "+e);
+        }
+        System.out.println(sb.toString());
+
+        return sb.toString();
+    }
 
     /**
      * tworzy dane na podstawie których tworzony jest poziom
@@ -156,6 +179,11 @@ public final class ServerCommands {
         }
         return sb.toString();
     }
+
+    /**
+     * metoda wysyłająca liczbę oznaczającą liczbę leveli
+     * @return
+     */
     private static String getNumberOfLvls(){
         StringBuilder sb = new StringBuilder();
         try (BufferedReader br = new BufferedReader(new FileReader("Config\\numberOfLvls.xml"))){
@@ -170,6 +198,10 @@ public final class ServerCommands {
         return sb.toString();
     }
 
+    /**
+     * metoda wysyłająca pomoc do gry
+     * @return
+     */
     private static String getHelp(){
         StringBuilder sb = new StringBuilder();
         try (BufferedReader br = new BufferedReader(new FileReader("Config\\help.xml"))){
